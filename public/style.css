@@ -1,1 +1,216 @@
+/*  -----------------------------------------        */
+/*  Übergreifend / Body                              */
+/*  -----------------------------------------        */
+html, body {
+ background-image:url("");
+ background-repeat:no-repeat; 
+ background-size: cover;      
+ overflow:hidden;             
+ font-size:13pt;
+ font-family: 'Montserrat', sans-serif;        ! Festlegung der Schriftart;
+ background-color: rgb(255,255,255);
+}
 
+#kopfbereich {
+
+  position:fixed;            ! Position des Kopfbereichs ist immer oben - FIX!;
+  top:0;                     ! Position oben;
+  left:0;                    ! Position ganz links;
+  border: 1px solid #ccc;    ! Rahmenart und -farbe;
+  background-color:rgba(255,255,255,1); 
+  width:100%;                ! Breite des Kopfbereichs;
+  height:100px;              ! Höhe des Kopfbereichs;
+  z-index:2;                 ! Kopfbereich überlagert andere Bereiche;                
+}
+
+#textbereich {
+
+  position:fixed;            ! Position des Textbereichs immer in der Mitte!;
+  left:0;                    ! Textbereich fängt ganz links an;
+  right:0;                   ! Textbereich geht bis ganz rechts;
+  top:100px;                 ! Außenabstand zum Kopfbereich;
+  padding-left:10px;        ! Innenabstand zum Menü;
+  padding-right:10px;       ! Innenabstand zum Newsbereich;
+  padding-top:10px;          ! Innenabstand nach oben;
+  padding-bottom:60px;       ! Innenabstand nach unten;
+  border: 1px solid #ccc;    ! Rahmenart und -farbe;
+  height:100%;               ! Höhe des Textbereiches auf 100% eingestellt;
+  overflow-y: auto;          ! Zeige Scrollbalken rechts, falls notwendig;
+  background-color:rgba(255,255,255,0.85); ! Hintergrund ist weiß mit 50 %iger Transparenz;
+}
+
+.autoscroll {
+overflow-y: auto;
+}
+
+#fussbereich {
+
+ position:fixed;              ! Position des Fußbereichs immer unten!;
+ bottom:0;                    ! Unten ausgerichtet!;
+ left:0;                      ! Position ganz links;
+ border: 1px solid #ccc;      ! Rahmenart und -farbe;
+ width: 100%;                 ! Breite des Fussbereichs;
+ background-color:rgba(255,255,255,1); 
+ height:50px;                 ! Höhe des Fußbereichs;
+ z-index:2;                   ! Fußbereich überlagert andere Bereiche;  
+ text-align:center;            ! Text wird im Fussbereich zentriert;
+ padding:10px;                ! Innenabstand einheitlich bei 10px;
+} 
+
+/*  Höhe des Contentbereichs festlegen (wichtig!)    */                    
+.content-block {
+  padding-bottom: 1000px;
+}
+/*  ----------------------------------------- */
+/*  Schriftformatierung                       */
+/*  ----------------------------------------- */
+
+p {
+font-style:normal;                                                 ! Festlegung des Schrifttyps;
+font-weight:normal;                                                ! Festlegung der Fettschrift;
+color:#000000;                                                     ! Festlegung des Schriftfarbe;
+}
+.title {
+font-stretch:wider;                                                ! Festlegung der Schriftweite;
+font-size:130%;                                                    ! Festlegung des Schriftgröße;
+font-weight:bold;                                                  ! Festlegung der Fettschrift;
+}
+
+.header-title {
+font-stretch:ultra-expanded;
+font-size:200%;
+font-weight:bold;
+text-align:center;
+margin-top:10px;
+color: rgb(0,0,0);
+}
+
+.footer-text {
+font-stretch:wider;              ! Festlegung der Schriftweite;
+font-size:80%;                  ! Festlegung des Schriftgröße;
+font-weight:bold;                ! Festlegung der Fettschrift;
+color: rgb(0,0,0);	       ! Festlegung der Schriftfarbe (hier weiß);
+}
+
+.footer-text > a:hover {
+
+	font-weight:700;	! Festlegung der Fettschrift für Montserrat, ansonsten bold einstellen;
+	font-style:oblique;	! Festlegung der Kursiv-Schrift;
+	color: rgba(255,215,0,1);	! Festlegung des Schriftfarbe (gold);
+}
+/*  ----------------------------------------- */
+/*  Bilder einbinden                          */
+/*  ----------------------------------------- */
+.header-image {
+  content:url(https://cdn.glitch.global/d7413659-b2af-44f5-b809-ff97a6814165/Logo_BKSD_neu.jpg?v=1747912509962);
+  width:200px;
+  float:left;
+  margin:5px;
+    
+}
+
+video {
+  width:100%;
+  max-width:600px;
+}
+
+iframe {
+  width:100%;
+  max-width:700px;
+  max-height:500px;
+}
+
+
+/* --------------------  */
+/* Bildergalerie (GRID)   */
+/* --------------------  */
+
+.gallery {
+  --size: 10em; /* control the size */
+  --gap: 1em;  /* control the gap */
+  --zoom: 1.5;   /* control the scale factor */
+  
+  display: grid;
+  gap: var(--gap);
+  width: calc(3.5*var(--size) + 2*var(--gap));
+  aspect-ratio: 3; /* ratio between width and height */
+  grid-template-columns: repeat(3,auto);
+}
+.gallery figure {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.gallery figcaption {
+	position: absolute;
+  bottom: 0;
+	left: 0;
+	text-align: center;
+	width: 100%;
+  opacity: 0;
+	color: white;
+	background: rgba(0, 0, 0, 0.5);	
+  font-size:90%;
+  font-weight:bold;
+}
+
+.gallery figure:hover figcaption,
+.gallery figure:focus figcaption {
+  opacity: 1;
+}
+
+.gallery > figure img {
+  width: 0;
+  height: 0;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  filter: grayscale(80%);
+  transition: .35s linear;
+}
+
+.gallery figure:hover img,
+.gallery figure:focus img{
+  filter: grayscale(0);
+  width:  calc(var(--size)*var(--zoom));
+  height: calc(var(--size)*var(--zoom));
+}
+
+/*  ---------------------------   */
+/*  Ausrichtung von Objekten      */
+/*  ---------------------------   */
+
+.left {
+ float:left;
+}
+
+.right {
+ float:right;
+}
+
+/*  ---------------------------   */
+/*  Tabellenformatierung          */
+/*  ---------------------------   */
+table, th, td, caption {
+  border: thin solid #a0a0a0;
+  vertical-align: top;
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 5px;
+  margin: 10px;
+  table-layout: auto;
+  width: 100%;
+}
+th, td {
+  font-weight: normal;
+  text-align: left;
+}
+th, caption {
+  background-color: #f1f3f4;
+  font-weight: 700;
+}
